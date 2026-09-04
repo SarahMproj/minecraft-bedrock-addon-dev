@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Craftable Houses Resources",
+    "description": "Resource pack for the Craftable Houses DLC alpha.",
+    "uuid": "2a37c007-0967-4ca6-a2c3-fba78ea21102",
+    "version": [0, 1, 0],
+    "min_engine_version": [1, 26, 30]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "dcc96a90-c874-41c8-93e3-0adc9eb8bcda",
+      "version": [0, 1, 0]
+    }
+  ]
+}
