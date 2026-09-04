@@ -1,0 +1,4 @@
+interface:
+  display_name: "Minecraft Bedrock Add-on Developer"
+  short_description: "Build and validate Bedrock add-on DLC"
+  default_prompt: "Use $minecraft-bedrock-addon-dev to build a Minecraft Bedrock add-on from this concept."
