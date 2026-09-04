@@ -2,26 +2,26 @@
 
 **Product:** Craftable Houses
 **Phase:** Alpha production / first playable vertical slice
-**Current milestone:** Craft → use → place one complete Plains Starter Cottage safely in Survival
+**Current milestone:** Validate and safely place the generated Plains Starter Cottage in Bedrock
 **Status updated:** 2026-09-04
 
 ## Status dashboard
 
 | Category | Status | Current state | Next gate |
 |---|---|---|---|
-| Bedrock engineering capability | 🟢 Strong | Shared Bedrock skill, source-backed syntax references, scaffold/validator/packager exist | Validate this pack against current target Bedrock build |
-| DLC portfolio / product strategy | 🟢 Defined | Craftable Houses is Pack 01 of the opening DLC trilogy; intended as an expandable biome/theme drop system | Freeze launch SKU and update cadence |
-| Content design | 🟡 In production | Launch architecture = biome-based house kits; first vertical slice is Plains Starter Cottage | Lock Pack 01 house roster and recipe matrix |
-| Brand / visual universe | 🟡 Emerging | Cozy, collectible, immediately legible house-kit fantasy; structures should feel Minecraft-native rather than imported prefab art | Formalize palette, icon language, naming rules, screenshot style |
-| Competitive research | 🟡 Pending consolidation | Category and competitor research identified as required before commercial positioning is frozen | Build current Marketplace competitor/pricing/review matrix |
-| Behavior Pack / Resource Pack implementation | 🟡 Started | Alpha pack manifests, first custom house-kit item, recipe, localization, item atlas and placement script are being created | Add real `.mcstructure`, clearance logic and validated consumption flow |
-| Models / textures / icons | 🟡 Spec stage | First kit icon slot and structure art direction defined; production asset not yet final | Produce final 16/32px kit icon and house structure |
-| Playable package | 🔴 Not yet | Packaging tooling exists; product is not yet a complete `.mcaddon` | Produce first alpha package after real structure asset exists |
-| Device / multiplayer testing | 🔴 Not yet | No in-game test session recorded | Windows Bedrock content log → multiplayer → console/mobile matrix |
-| Publisher / Marketplace track | 🔴 Not selected | Commercial publishing partner still required | Identify and approach qualified partner after vertical slice |
-| Creator GTM / gameplay capture | 🟡 Strategy defined | Creator reviews, gameplay reels and drop-based fandom strategy are planned | Capture first satisfying craft/place transformation clip |
-| Current milestone | 🟡 Active | Plains Starter Cottage vertical slice | Achieve reliable Survival craft-and-place loop |
-| Blockers / risks | 🟡 Known | Real structure binary, placement UX/clearance, final art assets, in-game validation, Marketplace partner | Resolve in vertical-slice order |
+| Bedrock engineering capability | 🟢 Strong | Shared Bedrock skill, source-backed syntax references, scaffold/validator/packager exist | Validate this pack and generated structure against target Bedrock build |
+| DLC portfolio / product strategy | 🟢 Defined | Craftable Houses is Pack 01 of the opening DLC trilogy; expandable biome/theme drop system | Freeze launch SKU/update cadence after first playtest |
+| Content design | 🟢 Vertical slice frozen | Plains Starter Cottage spec is frozen at 11×8×9; launch Village Collection roster is defined | Apply house primitive to Desert Courtyard House after alpha validates |
+| Brand / visual universe | 🟡 Emerging | Cozy, collectible, Minecraft-native house-kit fantasy; Plains silhouette language established | Produce final kit icon and screenshot style |
+| Competitive research | 🟡 Pending consolidation | Competitor/pricing/review matrix remains a commercial-positioning task | Complete before Marketplace packaging/partner pitch |
+| Behavior Pack / Resource Pack implementation | 🟡 Advanced alpha | Linked manifests, kit item, recipe, placement script, deterministic structure generator and packaged `.mcstructure` now exist | Add clearance, orientation, success confirmation and Survival consumption |
+| Models / textures / icons | 🟡 Structure built / icon pending | First actual house structure asset exists; item icon/resource atlas still pending | Finalize cottage art polish and kit icon |
+| Playable package | 🟡 Structure-ready | Core product files now include the real cottage structure; full `.mcaddon` not yet built/tested | Complete placement safety + RP assets, then package Alpha 0.1 |
+| Device / multiplayer testing | 🔴 Not yet | No in-game structure load or placement test recorded yet | Windows Bedrock Content Log + four rotations + 2-player race |
+| Publisher / Marketplace track | 🔴 Not selected | Commercial publishing partner still required | Approach after vertical slice demonstrates clean gameplay |
+| Creator GTM / gameplay capture | 🟡 Strategy defined | Creator reviews, gameplay reels and transformation clips planned | Capture first successful craft → place moment |
+| Current milestone | 🟡 Active | Generated `craftable:plains_starter_cottage` is committed | Confirm Bedrock parses/loads it, then harden placement loop |
+| Blockers / risks | 🟡 Narrowed | In-game structure validation, placement UX/clearance, final icon/RP assets, recipe economy | Resolve in vertical-slice order |
 
 ## Session log
 
@@ -36,21 +36,47 @@
 - First alpha target: `Plains Starter Cottage`.
 
 **Odyssey**
-- Began BP/RP project structure.
-- Defined first house-kit item and shaped Survival recipe.
-- Began Script API placement path for a packaged `.mcstructure`.
+- Created linked BP/RP manifests.
+- Added `craftable:plains_cottage_kit` and shaped mechanics-test recipe.
+- Added Script API structure placement path.
+- Defined the Pack 01 Village Collection and Building Bundle economy architecture.
 
 **Realization**
-- The reusable product primitive is not “a house”; it is **House Kit = recipe + item + icon + structure + placement rules + safety checks + localization + test case**. Once one primitive is proven, the catalog can scale systematically.
+- The reusable product primitive is **House Kit = recipe + item + icon + structure + placement rules + safety checks + localization + test case**.
 
 **Internal change**
-- Project status changes from late pre-production to **alpha production**.
+- Project moved from late pre-production to alpha production.
 
 **External change**
-- Product files now begin living under a dedicated Craftable Houses project path rather than only as generic skill examples.
+- Product files now live under a dedicated Craftable Houses project path.
+
+### 2026-09-04 — Plains Starter Cottage structure build
+
+**Start**
+- Took the first house from a visual target to a deterministic build specification.
+
+**Threshold**
+- Froze the alpha structure at `11×8×9` with a `9×7` enclosed core and a centered front entry.
+
+**Odyssey**
+- Designed cobblestone foundation, oak plank shell, oak-log frame, symmetrical glass windows, stepped gable roof, chimney, crafting table and bookshelf utility.
+- Generated an exact structural BOM: 209 oak planks, 32 oak logs, 35 cobblestone, 22 glass, 2 bookshelves, 1 crafting table.
+- Added `PLAINS_STARTER_COTTAGE.md` as the source design spec.
+- Added dependency-free `tools/generate_plains_starter_cottage.py`.
+- Generated and committed `behavior_pack/structures/craftable/plains_starter_cottage.mcstructure`.
+- Exterior empty cells use structure void while interior clear-space cells use explicit air to reduce accidental terrain erasure.
+
+**Realization**
+- Structures should be generated from reproducible source definitions wherever practical. This gives us exact dimensions, BOMs, repeatability and easier iteration rather than treating `.mcstructure` binaries as opaque assets.
+
+**Internal change**
+- The first cottage is no longer a concept or missing binary; it is an actual generated Bedrock structure candidate.
+
+**External change**
+- `craftable:plains_starter_cottage` now exists in the branch at the path expected by the placement script.
 
 **Stop / handoff**
-- Next work session begins with creation/import of the actual Plains Starter Cottage `.mcstructure`, final placement/consumption behavior, validation, and first package build.
+- Next work session begins with in-game structure parsing/placement validation, then orientation + clearance + consume-on-success behavior.
 
 ## Definition of vertical-slice done
 
@@ -59,20 +85,23 @@ The first house is only considered **validated** when all are true:
 - Player can obtain ingredients in Survival.
 - Crafting-table recipe produces exactly one Plains Cottage Kit.
 - Kit has a final icon and localized display name.
+- Bedrock recognizes `craftable:plains_starter_cottage` from the behavior pack.
 - Using the kit places the intended structure in the correct dimension/location.
 - Placement checks prevent obvious destructive overlap and invalid world-height placement.
+- Player-facing orientation is predictable in all four directions.
 - Kit is consumed only after successful placement.
 - Failure leaves the kit in inventory and gives useful feedback.
 - Structure behaves correctly when two players attempt placement.
 - Content Log has no release-blocking errors.
-- Pack passes local validator and Mojang validation available for the target release.
+- Pack passes local validation plus available Mojang validation for target release.
 - `.mcaddon` installs cleanly in a fresh test world.
 
 ## Next session priorities
 
-1. Build/import `craftable:plains_starter_cottage` structure.
-2. Implement clearance + placement-success + item-consumption logic.
-3. Produce final kit icon and localization pass.
-4. Validate BP/RP identifiers and pack linkage.
-5. Package Alpha 0.1 and run the first in-game test.
-6. Record bugs here before expanding to House 02.
+1. Load generated `.mcstructure` in target Bedrock build and confirm `getPackStructureIds()` sees it.
+2. Test raw placement and visually inspect cottage against `PLAINS_STARTER_COTTAGE.md`.
+3. Implement four-direction orientation and anchor offsets.
+4. Implement conservative footprint/world-height clearance checks.
+5. Implement consume-on-success in Survival with no-consume failure path.
+6. Add final item atlas/localization/icon assets.
+7. Package Alpha 0.1 and record the first in-game test results here.
