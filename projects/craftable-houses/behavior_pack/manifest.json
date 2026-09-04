@@ -1,0 +1,34 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Craftable Houses Behavior",
+    "description": "Behavior pack for the Craftable Houses DLC alpha.",
+    "uuid": "bd8aabef-043b-424e-a8ac-29ca20506f47",
+    "version": [0, 1, 0],
+    "min_engine_version": [1, 26, 30]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "b73fa56c-a1e0-4e8a-a8e8-96abaaf7a671",
+      "version": [0, 1, 0]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "entry": "scripts/main.js",
+      "uuid": "df70cee4-067f-49d7-8353-10543e456e84",
+      "version": [0, 1, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "2a37c007-0967-4ca6-a2c3-fba78ea21102",
+      "version": [0, 1, 0]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.6.0"
+    }
+  ]
+}
